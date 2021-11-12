@@ -2,7 +2,8 @@ import { createContext,
   Dispatch,
   ReactNode,
   SetStateAction,
-  useState } from "react";
+  useState,
+  useEffect } from "react";
 import { getAuth, User, onAuthStateChanged } from 'firebase/auth'
 
 interface UserContextT {
@@ -17,10 +18,17 @@ export const UserContextProvider = (props: {
 }) => {
   const auth = getAuth()
   const [user, setUser] = useState<User>(auth.currentUser!)
+  const [loaded, setLoaded] = useState(false)
   const value = { user, setUser } as UserContextT
   const { Provider } = UserContext
-  onAuthStateChanged(auth, (u) => {
-    setUser(u!)
-  })
+  useEffect(() => {
+    onAuthStateChanged(auth, (u) => {
+      setUser(u!)
+      setLoaded(true)
+    })
+  }, [auth])
+  if (!loaded) {
+    return <></>
+  }
   return <Provider value={value}>{props.children}</Provider>
 }

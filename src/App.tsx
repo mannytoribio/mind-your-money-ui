@@ -6,6 +6,9 @@ import { initializeApp } from 'firebase/app'
 import { createTheme, CssBaseline } from '@mui/material'
 import { Home } from './scenes/Home'
 import './App.css'
+import { UserContextProvider } from './context/UserContext'
+import { AnonRoute } from './components/AnonRoute'
+import { AuthRoute } from './components/AuthRoute'
 
 const firebaseConfig = {
   apiKey: "AIzaSyDWW7bh5I9sXZl6uzBST5TzntzSBhdQe9E",
@@ -21,15 +24,32 @@ const app = initializeApp(firebaseConfig)
 function App() {
   const theme = createTheme({
     palette: { mode: 'dark',
-  }
+}
   })
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        <Routes>
-          <Route path="/" element={< Home />}/>
-        </Routes>
+        <UserContextProvider>
+          <Routes>
+            <Route 
+              path='/login'
+              element={
+                <AnonRoute>
+                  <Home /> 
+                {/* Home will only appear to those !loggedin, in order to return you must logout */}
+                </ AnonRoute>}
+            />
+            <Route 
+              path='/dashboard'
+              element={
+                <AuthRoute>
+                 {/* <Dashboard /> 
+                    Dash will only appear to those loggedin */}
+                </ AuthRoute>}
+            />
+          </Routes>
+        </UserContextProvider>
       </Router>
     </ThemeProvider>
   );
