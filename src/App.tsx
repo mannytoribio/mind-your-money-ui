@@ -5,6 +5,7 @@ import { ThemeProvider } from '@emotion/react'
 import { initializeApp } from 'firebase/app'
 import { createTheme, CssBaseline } from '@mui/material'
 import { Home } from './scenes/Home'
+import Financials from "./scenes/Financials"
 import './App.css'
 import { UserContextProvider } from './context/UserContext'
 import { AnonRoute } from './components/AnonRoute'
@@ -40,14 +41,13 @@ function App() {
                 {/* Home will only appear to those !loggedin, in order to return you must logout */}
                 </ AnonRoute>}
             />
-            {/* <Route 
-              path='/dashboard'
+            <Route 
+              path='/financials'
               element={
                 <AuthRoute>
-                  <Dashboard /> 
-                    Dash will only appear to those loggedin 
+                  <Financials /> 
                 </ AuthRoute>}
-            /> */}
+            />
           </Routes>
         </UserContextProvider>
       </Router>
