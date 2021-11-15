@@ -33,21 +33,21 @@ function App() {
         <UserContextProvider>
           <Routes>
             <Route 
-              path='/login'
+              path='/home'
               element={
                 <AnonRoute>
                   <Home /> 
                 {/* Home will only appear to those !loggedin, in order to return you must logout */}
                 </ AnonRoute>}
             />
-            <Route 
+            {/* <Route 
               path='/dashboard'
               element={
                 <AuthRoute>
-                 {/* <Dashboard /> 
-                    Dash will only appear to those loggedin */}
+                  <Dashboard /> 
+                    Dash will only appear to those loggedin 
                 </ AuthRoute>}
-            />
+            /> */}
           </Routes>
         </UserContextProvider>
       </Router>
