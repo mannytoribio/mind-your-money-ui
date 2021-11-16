@@ -15,15 +15,21 @@ export default function FinacialsFields() {
     >
       <div>
         <TextField
-          label="Name"
-          defaultValue="Name"
+          label="Income Stream"
+          defaultValue="Job 1"
           variant="filled"
         />
         <TextField
-          label="Email"
-          type="email"
-          defaultValue="example@email.com"
-          helperText="Enter Valid Email Address."
+          label="Income Amount"
+          type="number"
+          defaultValue="2500"
+          // helperText="Enter Income stream title and amount."
+          variant="filled"
+        />
+        <TextField
+          label="Monthly Frequency"
+          type="number"
+          defaultValue="2"
           variant="filled"
         />
       </div>
