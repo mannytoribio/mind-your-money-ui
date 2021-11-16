@@ -8,6 +8,9 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import FinancialValues from '../components/FinancialValues'
+import axios from 'axios';
+
+
 
 const steps = [
   {
@@ -55,9 +58,9 @@ export default function VerticalLinearStepper() {
             >
               {step.label}
             </StepLabel>
-            <FinancialValues activeStep={activeStep}/>
             <StepContent>
               <Typography>{step.description}</Typography>
+              <FinancialValues activeStep={activeStep}/>
               <Box sx={{ mb: 2 }}>
                 <div>
                   <Button
