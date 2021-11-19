@@ -1,7 +1,7 @@
 import { Dispatch, ReactNode, SetStateAction } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { createIncome, Income } from '../service/income.service';
+import { Income } from '../service/income.service';
 
 
 type Props = {
@@ -42,7 +42,7 @@ export default function FinancialValues({activeStep, income, setIncome}: Props) 
           <div className="income_savings">
             <TextField
               label="Income Stream"
-              defaultValue="Job 1"
+              // defaultValue="Job 1"
               value={income.incomeStream}
               onChange={e => handleIncome(e, 'incomeStream')}
               variant="filled"
@@ -50,7 +50,7 @@ export default function FinancialValues({activeStep, income, setIncome}: Props) 
             <TextField
               label="Income Amount"
               type="number"
-              defaultValue="2500"
+              // defaultValue="2500"
               value={income.incomeAmount}
               onChange={e => handleIncome(e, 'incomeAmount')}
               // helperText="Enter Income stream title and amount."
@@ -59,7 +59,7 @@ export default function FinancialValues({activeStep, income, setIncome}: Props) 
             <TextField
               label="Monthly Frequency"
               type="number"
-              defaultValue="2"
+              // defaultValue="2"
               value={income.incomeFrequency}
               onChange={e => handleIncome(e, 'incomeFrequency')}
               variant="filled"

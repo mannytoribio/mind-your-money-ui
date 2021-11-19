@@ -39,13 +39,29 @@ export default function Financials() {
     incomeFrequency: 2
   })
 
-  const handleNext = () => {
+  const handleNext = async (e: any) => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    // if(steps.length - 1) {
+    //   // submit all my data to the database;
+    //   e.preventDefault()
+    //   setIncome(e.target.value)
+    //   try{
+    //     await createIncome(income)
+    //     console.log('It worked')
+    //     // await create expenses and goals
+    //   } catch (err) {
+    //     alert(err)
+    //   }
+    // }
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
+
+  // const handleReset = () => {
+  //   setActiveStep(0);
+  // };
 
   const handleSubmit = async (e: any) => {
     if(steps.length - 1) {
@@ -54,6 +70,7 @@ export default function Financials() {
       setIncome(e.target.value)
       try{
         await createIncome(income)
+        console.log('It worked')
         // await create expenses and goals
       } catch (err) {
         alert(err)
