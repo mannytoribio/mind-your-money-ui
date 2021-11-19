@@ -1,12 +1,32 @@
-import * as React from 'react';
+import { Dispatch, ReactNode, SetStateAction } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { createIncome, Income } from '../service/income.service';
+
 
 type Props = {
   activeStep: number;
+  income: Income;
+  setIncome: Dispatch<SetStateAction<Income>>;
+  children: ReactNode | ReactNode[];
 }
 
-export default function FinancialValues({activeStep}: Props) {
+// const handleIncome = async (e: any) => {
+//   e.preventDefault()
+//   setIncome(e.target.value)
+//   try{
+//     await createIncome(income)
+//   } catch (err) {
+//     alert(err)
+//   }
+// }
+
+
+export default function FinancialValues({activeStep, income, setIncome}: Props) {
+  const handleIncome = async (e: any, key: string) => {
+    e.preventDefault()
+    setIncome({ ...income, [key]: e.target.value })
+  }
   return (
     <>
     {activeStep === 0 && 
@@ -23,12 +43,16 @@ export default function FinancialValues({activeStep}: Props) {
             <TextField
               label="Income Stream"
               defaultValue="Job 1"
+              value={income.incomeStream}
+              onChange={e => handleIncome(e, 'incomeStream')}
               variant="filled"
             />
             <TextField
               label="Income Amount"
               type="number"
               defaultValue="2500"
+              value={income.incomeAmount}
+              onChange={e => handleIncome(e, 'incomeAmount')}
               // helperText="Enter Income stream title and amount."
               variant="filled"
             />
@@ -36,6 +60,8 @@ export default function FinancialValues({activeStep}: Props) {
               label="Monthly Frequency"
               type="number"
               defaultValue="2"
+              value={income.incomeFrequency}
+              onChange={e => handleIncome(e, 'incomeFrequency')}
               variant="filled"
             />
             <TextField

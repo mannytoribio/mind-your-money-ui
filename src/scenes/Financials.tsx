@@ -1,4 +1,6 @@
-import * as React from 'react';
+import React, {
+  useState
+} from 'react';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -8,7 +10,7 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import FinancialValues from '../components/FinancialValues'
-import axios from 'axios';
+import { createIncome, Income } from '../service/income.service';
 
 
 
@@ -29,8 +31,13 @@ const steps = [
   },
 ];
 
-export default function VerticalLinearStepper() {
+export default function Financials() {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [income, setIncome] = useState<Income>({
+    incomeStream: 'Job 1', 
+    incomeAmount: 0,
+    incomeFrequency: 2
+  })
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -40,8 +47,18 @@ export default function VerticalLinearStepper() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
+  const handleSubmit = async (e: any) => {
+    if(steps.length - 1) {
+      // submit all my data to the database;
+      e.preventDefault()
+      setIncome(e.target.value)
+      try{
+        await createIncome(income)
+        // await create expenses and goals
+      } catch (err) {
+        alert(err)
+      }
+    }
   };
 
   return (
@@ -60,7 +77,9 @@ export default function VerticalLinearStepper() {
             </StepLabel>
             <StepContent>
               <Typography>{step.description}</Typography>
-              <FinancialValues activeStep={activeStep}/>
+              <FinancialValues children activeStep={activeStep} income={income} setIncome={setIncome}  /> 
+              {/* <FinancialValues children={[income, setIncome, activeStep]: Props}/>  */}
+              {/* pass in state setState for each above */}
               <Box sx={{ mb: 2 }}>
                 <div>
                   <Button
@@ -86,8 +105,8 @@ export default function VerticalLinearStepper() {
       {activeStep === steps.length && (
         <Paper square elevation={0} sx={{ p: 3 }}>
           <Typography>All steps completed - you&apos;re finished</Typography>
-          <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
-            Reset
+          <Button onClick={handleSubmit} sx={{ mt: 1, mr: 1 }}>
+            Submit
           </Button>
         </Paper>
       )}
