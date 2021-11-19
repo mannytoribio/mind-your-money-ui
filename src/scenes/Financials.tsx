@@ -11,7 +11,8 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import FinancialValues from '../components/FinancialValues'
 import { createIncome, Income } from '../service/income.service';
-
+import { createExpense, Expense } from '../service/expense.service';
+import { Goal } from '../service/goal.service';
 
 
 const steps = [
@@ -39,20 +40,19 @@ export default function Financials() {
     incomeFrequency: 2
   })
 
+  const [expense, setExpense] = useState<Expense>({
+    expenseDescription: 'Rent',
+    expenseAmount: 2000
+  })
+
+  const [goal, setGoal] = useState<Goal>({
+    goalName: 'Vacation to Italy',
+    goalCost: 5000,
+    goalDeadline: new Date('01/01/2021')
+  })
+
   const handleNext = async (e: any) => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    // if(steps.length - 1) {
-    //   // submit all my data to the database;
-    //   e.preventDefault()
-    //   setIncome(e.target.value)
-    //   try{
-    //     await createIncome(income)
-    //     console.log('It worked')
-    //     // await create expenses and goals
-    //   } catch (err) {
-    //     alert(err)
-    //   }
-    // }
   };
 
   const handleBack = () => {
@@ -70,8 +70,12 @@ export default function Financials() {
       setIncome(e.target.value)
       try{
         await createIncome(income)
-        console.log('It worked')
-        // await create expenses and goals
+      } catch (err) {
+        alert(err)
+      }
+      setExpense(e.target.value)
+      try{
+        await createExpense(expense)
       } catch (err) {
         alert(err)
       }
@@ -94,9 +98,7 @@ export default function Financials() {
             </StepLabel>
             <StepContent>
               <Typography>{step.description}</Typography>
-              <FinancialValues children activeStep={activeStep} income={income} setIncome={setIncome}  /> 
-              {/* <FinancialValues children={[income, setIncome, activeStep]: Props}/>  */}
-              {/* pass in state setState for each above */}
+              <FinancialValues children activeStep={activeStep} income={income} setIncome={setIncome} expense={expense} setExpense={setExpense} goal={goal} setGoal={setGoal} /> 
               <Box sx={{ mb: 2 }}>
                 <div>
                   <Button

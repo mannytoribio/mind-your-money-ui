@@ -2,30 +2,34 @@ import { Dispatch, ReactNode, SetStateAction } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Income } from '../service/income.service';
-
+import { Expense } from '../service/expense.service';
+import { Goal } from '../service/goal.service';
 
 type Props = {
   activeStep: number;
   income: Income;
   setIncome: Dispatch<SetStateAction<Income>>;
+  expense: Expense;
+  setExpense: Dispatch<SetStateAction<Expense>>;
+  goal: Goal;
+  setGoal: Dispatch<SetStateAction<Goal>>;
   children: ReactNode | ReactNode[];
 }
 
-// const handleIncome = async (e: any) => {
-//   e.preventDefault()
-//   setIncome(e.target.value)
-//   try{
-//     await createIncome(income)
-//   } catch (err) {
-//     alert(err)
-//   }
-// }
 
 
-export default function FinancialValues({activeStep, income, setIncome}: Props) {
+export default function FinancialValues({activeStep, income, setIncome, expense, setExpense, goal, setGoal}: Props) {
   const handleIncome = async (e: any, key: string) => {
     e.preventDefault()
     setIncome({ ...income, [key]: e.target.value })
+  }
+  const handleExpense = async (e: any, key: string) => {
+    e.preventDefault()
+    setExpense({ ...expense, [key]: e.target.value })
+  }
+  const handleGoal = async (e: any, key: string) => {
+    e.preventDefault()
+    setGoal({ ...goal, [key]: e.target.value })
   }
   return (
     <>
@@ -86,12 +90,14 @@ export default function FinancialValues({activeStep, income, setIncome}: Props) 
       <div className="expenses">
         <TextField
           label='Expense Name'
-          defaultValue="Rent"
+          value={expense.expenseDescription}
+          onChange={e => handleExpense(e, 'expenseDescription')}
           variant="filled"
         />
         <TextField
           label='Monthly Cost'
-          defaultValue="$2,000"
+          value={expense.expenseAmount}
+          onChange={e => handleExpense(e, 'expenseAmount')}
           helperText="'$' Not Needed."
           variant="filled"
         />
@@ -123,7 +129,6 @@ export default function FinancialValues({activeStep, income, setIncome}: Props) 
         <TextField
           label="Target Date"
           type="Date"
-          defaultValue="01/01/2022"
           variant="filled"
         />
       </div>
