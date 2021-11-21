@@ -1,4 +1,5 @@
 import React, {
+  useContext,
   useState
 } from 'react';
 import Box from '@mui/material/Box';
@@ -9,12 +10,13 @@ import StepContent from '@mui/material/StepContent';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import { useNavigate } from 'react-router-dom';
 import FinancialValues from '../components/FinancialValues'
 import { createIncome, Income } from '../service/income.service';
 import { createExpense, Expense } from '../service/expense.service';
 import { createGoal, Goal } from '../service/goal.service';
 import { createSavings, Savings } from '../service/savings.service';
-import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 
 
 const steps = [
@@ -35,27 +37,32 @@ const steps = [
 ];
 
 export default function Financials() {
+  const { user } = useContext(UserContext)
   let navigate = useNavigate()
   const [activeStep, setActiveStep] = React.useState(0);
   const [income, setIncome] = useState<Income>({
     incomeStream: 'Job 1', 
     incomeAmount: 0,
-    incomeFrequency: 2
+    incomeFrequency: 2,
+    uid: user!.uid
   })
 
   const [expense, setExpense] = useState<Expense>({
     expenseDescription: 'Rent',
-    expenseAmount: 2000
+    expenseAmount: 2000,
+    uid: user!.uid
   })
 
   const [goal, setGoal] = useState<Goal>({
     goalName: 'Vacation to Italy',
     goalCost: 5000,
-    goalDeadline: new Date('01/01/2021')
+    goalDeadline: new Date('01/01/2021'),
+    uid: user!.uid
   })
 
   const [savings, setSavings] = useState<Savings>({
-    savingsAmount: 5000
+    savingsAmount: 5000,
+    uid: user!.uid
   })
 
   const handleNext = async (e: any) => {

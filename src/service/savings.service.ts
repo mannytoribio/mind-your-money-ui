@@ -11,8 +11,8 @@ export const createSavings = async (savings: Savings) => {
   await axios.post('http://localhost:5000/savings', savings)
 }
 
-export const getSavingsById = async (_id: string) => {
-  const ret = await axios.get(`http://localhost:5000/savings/:${_id}`)
+export const getSavingsByUserId = async (uid: string) => {
+  const ret = await axios.get(`http://localhost:5000/savings/:${uid}`)
 
   return ret.data as Savings
 }
