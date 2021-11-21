@@ -9,7 +9,7 @@ export interface Goal {
   uid?: string
 }
 
-export const createExpense = async (goal: Goal) => {
+export const createGoal = async (goal: Goal) => {
   await axios.post('http://localhost:5000/goal', goal)
 }
 

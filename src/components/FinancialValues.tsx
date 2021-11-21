@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import { Income } from '../service/income.service';
 import { Expense } from '../service/expense.service';
 import { Goal } from '../service/goal.service';
+import { Savings } from '../service/savings.service';
 
 type Props = {
   activeStep: number;
@@ -13,12 +14,14 @@ type Props = {
   setExpense: Dispatch<SetStateAction<Expense>>;
   goal: Goal;
   setGoal: Dispatch<SetStateAction<Goal>>;
+  savings: Savings;
+  setSavings: Dispatch<SetStateAction<Savings>>;
   children: ReactNode | ReactNode[];
 }
 
 
 
-export default function FinancialValues({activeStep, income, setIncome, expense, setExpense, goal, setGoal}: Props) {
+export default function FinancialValues({activeStep, income, setIncome, expense, setExpense, goal, setGoal, savings, setSavings}: Props) {
   const handleIncome = async (e: any, key: string) => {
     e.preventDefault()
     setIncome({ ...income, [key]: e.target.value })
@@ -30,6 +33,10 @@ export default function FinancialValues({activeStep, income, setIncome, expense,
   const handleGoal = async (e: any, key: string) => {
     e.preventDefault()
     setGoal({ ...goal, [key]: e.target.value })
+  }
+  const handleSavings = async (e: any, key: string) => {
+    e.preventDefault()
+    setSavings({ ...savings, [key]: e.target.value })
   }
   return (
     <>
@@ -71,7 +78,8 @@ export default function FinancialValues({activeStep, income, setIncome, expense,
             <TextField
               label="Total Savings"
               type="number"
-              defaultValue="5000"
+              value={savings.savingsAmount}
+              onChange={e => handleSavings(e, 'savingsAmount')}
               variant="filled"
             />
           </div>
@@ -117,18 +125,22 @@ export default function FinancialValues({activeStep, income, setIncome, expense,
       <div className="goal">
         <TextField
           label="Goal"
-          defaultValue="ex. Vacation to Italy"
+          value={goal.goalName}
+          onChange={e => handleGoal(e, 'goalName')}
           variant="filled"
         />
         <TextField
           label="Cost of Goal"
-          defaultValue="ex. $5,000"
+          value={goal.goalCost}
+          onChange={e => handleGoal(e, 'goalCost')}
           helperText="'$' Not Needed"
           variant="filled"
         />
         <TextField
           label="Target Date"
           type="Date"
+          value={goal.goalDeadline}
+          onChange={e => handleGoal(e, 'goalDeadline')}
           variant="filled"
         />
       </div>

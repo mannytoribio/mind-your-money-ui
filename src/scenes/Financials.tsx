@@ -12,7 +12,9 @@ import Typography from '@mui/material/Typography';
 import FinancialValues from '../components/FinancialValues'
 import { createIncome, Income } from '../service/income.service';
 import { createExpense, Expense } from '../service/expense.service';
-import { Goal } from '../service/goal.service';
+import { createGoal, Goal } from '../service/goal.service';
+import { createSavings, Savings } from '../service/savings.service';
+import { useNavigate } from 'react-router-dom';
 
 
 const steps = [
@@ -33,6 +35,7 @@ const steps = [
 ];
 
 export default function Financials() {
+  let navigate = useNavigate()
   const [activeStep, setActiveStep] = React.useState(0);
   const [income, setIncome] = useState<Income>({
     incomeStream: 'Job 1', 
@@ -49,6 +52,10 @@ export default function Financials() {
     goalName: 'Vacation to Italy',
     goalCost: 5000,
     goalDeadline: new Date('01/01/2021')
+  })
+
+  const [savings, setSavings] = useState<Savings>({
+    savingsAmount: 5000
   })
 
   const handleNext = async (e: any) => {
@@ -73,12 +80,25 @@ export default function Financials() {
       } catch (err) {
         alert(err)
       }
+      setSavings(e.target.value)
+      try{
+        await createSavings(savings)
+      } catch (err) {
+        alert(err)
+      }
       setExpense(e.target.value)
       try{
         await createExpense(expense)
       } catch (err) {
         alert(err)
       }
+      setGoal(e.target.value)
+      try{
+        await createGoal(goal)
+      } catch (err) {
+        alert(err)
+      }
+      navigate('/dashboard')
     }
   };
 
@@ -98,7 +118,7 @@ export default function Financials() {
             </StepLabel>
             <StepContent>
               <Typography>{step.description}</Typography>
-              <FinancialValues children activeStep={activeStep} income={income} setIncome={setIncome} expense={expense} setExpense={setExpense} goal={goal} setGoal={setGoal} /> 
+              <FinancialValues children activeStep={activeStep} income={income} setIncome={setIncome} expense={expense} setExpense={setExpense} goal={goal} setGoal={setGoal} savings={savings} setSavings={setSavings}/> 
               <Box sx={{ mb: 2 }}>
                 <div>
                   <Button

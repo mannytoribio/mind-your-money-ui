@@ -14,7 +14,7 @@ export const createExpense = async (expense: Expense) => {
   await axios.post('http://localhost:5000/expense', expense)
 }
 
-export const getExpenseByIncome = async (_id: string) => {
+export const getExpenseById = async (_id: string) => {
   const ret = await axios.get(`http://localhost:5000/expense/:${_id}`)
 
   return ret.data as Expense

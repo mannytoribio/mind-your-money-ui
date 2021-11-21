@@ -10,6 +10,7 @@ import './App.css'
 import { UserContextProvider } from './context/UserContext'
 import { AnonRoute } from './components/AnonRoute'
 import { AuthRoute } from './components/AuthRoute'
+import { Dashboard } from './scenes/Dashboard'
 
 const firebaseConfig = {
   apiKey: "AIzaSyDWW7bh5I9sXZl6uzBST5TzntzSBhdQe9E",
@@ -46,6 +47,13 @@ function App() {
               element={
                 <AuthRoute>
                   <Financials /> 
+                </ AuthRoute>}
+            />
+            <Route 
+              path='/dashboard'
+              element={
+                <AuthRoute>
+                  <Dashboard /> 
                 </ AuthRoute>}
             />
           </Routes>
