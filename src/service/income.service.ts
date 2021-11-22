@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getClient } from "./getClient";
 
 export interface Income {
   _id?: string;
@@ -10,13 +11,13 @@ export interface Income {
 }
 
 export const createIncome = async (income: Income) => {
-  await axios.post('http://localhost:5000/income', income)
+  const client = await getClient();
+  await client.post('/income', income)
 }
 
-export const getIncomeByUserId = async (jwt: string, uid: string) => {
-  const ret = await axios.get(`http://localhost:5000/income/${uid}`, {
-    headers: { Authorization: jwt },})
-
+export const getIncomeByUserId = async () => {
+  const client = await getClient();
+  const ret = await client.get(`/income`)
   return ret.data as Income[]
 }
 
