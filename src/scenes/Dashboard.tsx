@@ -50,3 +50,9 @@ export const Dashboard = () => {
     </>
   )
 }
+
+/* 
+Math TODO with this data:
+- Net Monthly
+- Net Monthly + Savings
+*/
