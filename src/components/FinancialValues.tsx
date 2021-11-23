@@ -62,7 +62,7 @@ export default function FinancialValues({activeStep, income, setIncome, expense,
               label="Income Amount"
               type="number"
               // defaultValue="2500"
-              value={income.incomeAmount}
+              value={+income.incomeAmount}
               onChange={e => handleIncome(e, 'incomeAmount')}
               // helperText="Enter Income stream title and amount."
               variant="filled"
