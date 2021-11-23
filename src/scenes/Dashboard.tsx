@@ -46,13 +46,17 @@ export const Dashboard = () => {
   return (
     <>
       <h1>Dashboard</h1>
-      <h2>{totalIncome - totalExpense}</h2>
+      <h2>Net Income: {totalIncome - totalExpense}</h2>
+      <h2>Monthly Burn Rate: {(totalExpense/totalIncome) * 100}%</h2>
     </>
   )
 }
 
 /* 
 Math TODO with this data:
-- Net Monthly
-- Net Monthly + Savings
+- Net Monthly: totalincome - totalexpenses
+- Net Monthly + totalSavings
+- Burn Rate: expenses/revenues as a %
+- Trajecotry to reach all goals: totalGoals/
+Need: Total Goals && Total Savings
 */

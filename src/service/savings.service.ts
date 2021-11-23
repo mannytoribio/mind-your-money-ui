@@ -1,4 +1,4 @@
-import axios from "axios";
+import { getClient } from "./getClient";
 
 export interface Savings {
   _id?: string;
@@ -8,11 +8,13 @@ export interface Savings {
 }
 
 export const createSavings = async (savings: Savings) => {
-  await axios.post('http://localhost:5000/savings', savings)
+  const client = await getClient();
+  await client.post('/savings', savings)
 }
 
-export const getSavingsByUserId = async (uid: string) => {
-  const ret = await axios.get(`http://localhost:5000/savings/:${uid}`)
+export const getSavingsByUserId = async () => {
+  const client = await getClient();
+  const ret = await client.get(`/savings`)
 
-  return ret.data as Savings
+  return ret.data as Savings[]
 }

@@ -1,4 +1,4 @@
-import axios from "axios";
+import { getClient } from "./getClient"
 
 export interface Goal {
   _id?: string;
@@ -10,11 +10,13 @@ export interface Goal {
 }
 
 export const createGoal = async (goal: Goal) => {
-  await axios.post('http://localhost:5000/goal', goal)
+  const client = await getClient();
+  await client.post('/goal', goal)
 }
 
-export const getGoalById = async (_id: string) => {
-  const ret = await axios.get(`http://localhost:5000/goal/:${_id}`)
+export const getGoalByUserId = async () => {
+  const client = await getClient();
+  const ret = await client.get(`/goal`)
 
-  return ret.data as Goal
+  return ret.data as Goal[]
 }
