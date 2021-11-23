@@ -35,12 +35,9 @@ function App() {
         <UserContextProvider>
           <Routes>
             <Route 
-              path='/home'
+              path='/'
               element={
-                <AnonRoute>
-                  <Home /> 
-                {/* Home will only appear to those !loggedin, in order to return you must logout */}
-                </ AnonRoute>}
+                  <Home /> }
             />
             <Route 
               path='/financials'

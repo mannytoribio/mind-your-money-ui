@@ -1,6 +1,9 @@
 import { getAuth } from "@firebase/auth"
 import axios from "axios"
 
+const API_URL='https://mind-your-money-rest.ue.r.appspot.com/'
+// export const API_URL='http://localhost:5000'
+
 export const getClient = async () => {
   const auth = getAuth();
   let headers = {};
@@ -9,5 +12,5 @@ export const getClient = async () => {
     headers = {Authorization: jwt}
   }
   
-  return axios.create({headers,baseURL: 'http://localhost:5000'})
+  return axios.create({headers,baseURL: API_URL})
 }
