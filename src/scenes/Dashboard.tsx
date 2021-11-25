@@ -74,7 +74,7 @@ export const Dashboard = () => {
       <h2>Monthly Burn Rate: {(totalExpense / totalIncome) * 100}%</h2>
       <h2>Net Yearly: {(totalIncome - totalExpense)* 12 + totalSavings}</h2>
       <h2>
-        Trajectory to Goals: {totalGoals / (totalIncome - totalExpense)} Months to Reach all
+        Trajectory to Goals: {Math.ceil(totalGoals / (totalIncome - totalExpense))} Months to Reach all
         Goals!
       </h2>
     </>
