@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100;1,400&display=swap');
+
 .hero-section {
   background-size: cover;
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
@@ -87,4 +90,99 @@
   .text {
     font-size: 16px;
   }
+}
+
+.ContainerContainer {
+  display: flex;
+  flex-direction: column;
+  color: honeydew;
+  min-height:600px;
+  font-family: 'Merriweather';
+}
+
+.HeroContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: 6;
+}
+
+.BenefitsContainer {
+  display: flex;
+  justify-content: space-evenly;
+  justify-content: center;
+}
+
+.TestimonialContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  flex:1;
+}
+
+.BodyContainer {
+  display: flex;
+  flex-direction: column;
+  flex:9;
+  background-image: url("../personalfinance.jpeg");
+  background-size: cover;
+}
+
+.FooterContainer {
+  display: flex;
+  flex: 1;
+  padding-right: 5px;
+  background-color: black;
+  justify-content: right;
+  align-content: center;
+  font-size: smaller;
+}
+
+.BenefitsBox {
+  min-width: 320px;
+  min-height: 200px;
+  padding: 15px;
+  margin: 15px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  word-wrap: break-word;
+  text-align: center;
+  font-family: 'Merriweather';
+  font-size: 30px;
+  font-style: bold;
+  color: '#118C4F';
+}
+
+.LoginBox {
+  min-width: 320px;
+  min-height: 400px;
+  border: solid 1px '#118C4F';
+  padding: 15px;
+  margin: 15px;
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.TestimonialBox {
+  /* min-width: 320px;
+  min-height: 200px; */
+  padding: 15px;
+  margin: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
+  word-wrap: break-word;
+  text-align: center;
+  font-family: 'Merriweather';
+  font-style: italic;
 }
