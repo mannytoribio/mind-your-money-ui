@@ -36,7 +36,7 @@ export default function Login() {
           margin: '10% auto',
           borderRadius: '16px',
           minHeight: '180px',
-          maxWidth: '240px'
+          maxWidth: '300px'
         }}
       >
         <CardContent>
