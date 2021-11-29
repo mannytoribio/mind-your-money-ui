@@ -20,9 +20,6 @@ export default function Navbar() {
       })
       .catch(err => err.message)
   }
-  const handleLogout = () => {
-    setUser(null!)
-  }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
