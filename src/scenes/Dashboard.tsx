@@ -4,7 +4,6 @@ import { getExpenseByUserId, Expense } from "../service/expense.service"
 import { getSavingsByUserId, Savings } from "../service/savings.service"
 import { getGoalByUserId, Goal } from "../service/goal.service"
 import MonthlyBurn from "../components/MonthlyBurnRate"
-import Navbar from "../components/common/Navbar"
 import Divider from "@mui/material/Divider"
 import "./dashboard.css"
 
@@ -17,7 +16,6 @@ export const Dashboard = () => {
   const [totalSavings, setTotalSavings] = useState<number>(0)
   const [goalItems, setGoalItems] = useState<Goal[]>()
   const [totalGoals, setTotalGoals] = useState<number>(0)
-  const [percentBurn, setPercentBurn] = useState<number>(0)
   useEffect(() => {
     getIncomeByUserId().then(setIncomeItems)
   }, [])
@@ -60,9 +58,6 @@ export const Dashboard = () => {
     getGoalByUserId().then(setGoalItems)
   }, [])
   useEffect(() => {
-    setPercentBurn((totalExpense / totalIncome) * 100)
-  }, [])
-  useEffect(() => {
     if (goalItems && goalItems.length) {
       setTotalGoals(
         goalItems.reduce((totalGoals, goal) => totalGoals + goal.goalCost, 0)
@@ -102,7 +97,7 @@ export const Dashboard = () => {
           <Divider orientation="vertical" />
           <div className="BigContainer split right">
             <h2>Monthly Burn Rate: {Math.ceil((totalExpense / totalIncome) * 100)}%</h2>
-            {/* <MonthlyBurn percentBurn={percentBurn}/> */}
+            <MonthlyBurn value={(totalExpense / totalIncome) * 100}/>
           </div>
         </div>
       </div>

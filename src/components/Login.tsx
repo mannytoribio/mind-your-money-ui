@@ -1,4 +1,4 @@
-import { Card, Button } from '@mui/material';
+import { Card } from '@mui/material';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -6,7 +6,6 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "@firebase/auth"
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../context/UserContext';
 import { useNavigate } from "react-router-dom"
-import { Google } from '@mui/icons-material';
 import GoogleButton from 'react-google-button'
 
 const provider = new GoogleAuthProvider()
@@ -36,8 +35,8 @@ export default function Login() {
           opacity: 0.9, 
           margin: '10% auto',
           borderRadius: '16px',
-          minHeight: '360px',
-          maxWidth: '300px'
+          minHeight: '180px',
+          maxWidth: '240px'
         }}
       >
         <CardContent>
@@ -46,9 +45,9 @@ export default function Login() {
             variant="h3"
             component="div"
             color="#202020"
-            style={{ textAlign: 'center', fontSize: '3em', fontStyle: 'italic', fontFamily: 'Roboto' }}
+            style={{ textAlign: 'center', fontSize: '1.5em', fontStyle: 'italic', fontFamily: 'Roboto' }}
           >
-            Sign Up to Mind Your Money
+            Start Minding Your Money
           </Typography>
         </CardContent>
         <CardActions

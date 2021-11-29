@@ -8,7 +8,6 @@ import { Home } from './scenes/Home'
 import Financials from "./scenes/Financials"
 import './App.css'
 import { UserContextProvider } from './context/UserContext'
-import { AnonRoute } from './components/AnonRoute'
 import { AuthRoute } from './components/AuthRoute'
 import { Dashboard } from './scenes/Dashboard'
 import Navbar from './components/common/Navbar'

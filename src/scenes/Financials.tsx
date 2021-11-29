@@ -102,8 +102,16 @@ export default function Financials() {
 
   return (
     <div className="ParentContainer">
-      <Box display="flex" alignContent="center" justifyContent="center">
-        <Stepper activeStep={activeStep} orientation="vertical">
+      <Box
+        sx={{ boxShadow: "25", fontSize: "2em", paddingLeft: "10px", paddingBottom: "15px" }}
+        display="flex"
+        justifyContent="center"
+      >
+        <Stepper
+          sx={{ boxShadow: "25", fontSize: "2em" }}
+          activeStep={activeStep}
+          orientation="vertical"
+        >
           {steps.map((step, index) => (
             <Step key={step.label}>
               <StepLabel
@@ -153,9 +161,12 @@ export default function Financials() {
         </Stepper>
         {activeStep === steps.length && (
           <Paper square elevation={0} sx={{ p: 3 }}>
-            <Typography>All steps completed - you&apos;re finished</Typography>
+            <Typography>Are you sure you&apos;re ready to submit?</Typography>
             <Button onClick={handleSubmit} sx={{ mt: 1, mr: 1 }}>
               Submit
+            </Button>
+            <Button onClick={handleBack} sx={{ mt: 1, mr: 1 }}>
+              Back
             </Button>
           </Paper>
         )}

@@ -1,9 +1,4 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "@firebase/auth"
-import { red } from "@mui/material/colors"
-import { useContext, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import Navbar from "../components/common/Navbar"
-import { UserContext } from "../context/UserContext"
+import { GoogleAuthProvider } from "@firebase/auth"
 import Login from "../components/Login"
 import "./home.css"
 

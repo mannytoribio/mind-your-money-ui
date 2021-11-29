@@ -88,8 +88,8 @@
 }
 
 .LoginBox {
-  min-width: 120px;
-  min-height: 400px;
+  min-width: 80px;
+  min-height: 120px;
   border: solid 1px '#54e69da9';
   padding: 15px;
   margin: 15px;

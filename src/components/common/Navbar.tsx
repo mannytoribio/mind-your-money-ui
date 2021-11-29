@@ -4,15 +4,14 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "@firebase/auth"
-import { useContext, useEffect } from 'react';
-import { useNavigate } from "react-router-dom"
+import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
 
 
 const provider = new GoogleAuthProvider()
 
 export default function Navbar() {
-  const { user, setUser } = useContext(UserContext)
+  const { setUser } = useContext(UserContext)
   const handleLogin = () => {
     const auth = getAuth()
     signInWithPopup(auth, provider)

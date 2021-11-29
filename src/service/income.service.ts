@@ -1,4 +1,3 @@
-import axios from "axios";
 import { getClient } from "./getClient";
 
 export interface Income {
