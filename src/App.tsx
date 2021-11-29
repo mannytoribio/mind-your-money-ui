@@ -11,6 +11,7 @@ import { UserContextProvider } from './context/UserContext'
 import { AnonRoute } from './components/AnonRoute'
 import { AuthRoute } from './components/AuthRoute'
 import { Dashboard } from './scenes/Dashboard'
+import Navbar from './components/common/Navbar'
 
 const firebaseConfig = {
   apiKey: "AIzaSyDWW7bh5I9sXZl6uzBST5TzntzSBhdQe9E",
@@ -25,12 +26,14 @@ const app = initializeApp(firebaseConfig)
 
 function App() {
   const theme = createTheme({
-    palette: { mode: 'light',
-}
+    palette: { mode: 'dark',
+  }
   })
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Navbar />
       <Router>
         <UserContextProvider>
           <Routes>

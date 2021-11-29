@@ -1,0 +1,52 @@
+.ParentContainer {
+  display: flex;
+  flex-direction: column;
+  color: honeydew;
+  min-height:100vh;
+  position: fixed;
+  z-index: 0;
+  font-family: 'Merriweather';
+}
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 200px;
+}
+.TwoRowContainer {
+  display: flex;
+  flex-direction: row;
+  color: honeydew;
+  min-height:100vh;
+  font-family: 'Merriweather';
+}
+
+.left {
+  left: 0;
+  background-color: #54e69da9;
+}
+
+.right {
+  right: 0;
+  background-color: #54e69da9;
+}
+
+.ColumnContainer {
+  display: flex;
+  flex-direction: column;
+  color: honeydew;
+  min-height:100vh;
+  font-family: 'Merriweather';
+}
+
+.BigContainer {
+  display: flex;
+  flex-direction: column;
+  color: honeydew;
+  min-height:100vh;
+  font-family: 'Merriweather';
+}

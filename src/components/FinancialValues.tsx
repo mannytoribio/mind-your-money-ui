@@ -1,4 +1,4 @@
-import { Dispatch, ReactNode, SetStateAction, useContext } from 'react';
+import { Dispatch, ReactNode, SetStateAction } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Income } from '../service/income.service';
@@ -116,7 +116,7 @@ export default function FinancialValues({activeStep, income, setIncome, expense,
       <Box
       component="form"
       sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
+        '& .MuiTextField-root': { m: 1, width: '25ch', padding: 1} 
       }}
       noValidate
       autoComplete="off"

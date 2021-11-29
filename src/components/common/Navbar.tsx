@@ -4,7 +4,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "@firebase/auth"
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
+import { useNavigate } from "react-router-dom"
 import { UserContext } from '../../context/UserContext';
 
 

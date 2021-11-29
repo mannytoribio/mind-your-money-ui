@@ -1,12 +1,14 @@
-import { useContext, useState, useEffect } from "react"
-import { UserContext } from "../context/UserContext"
+import { useState, useEffect } from "react"
 import { getIncomeByUserId, Income } from "../service/income.service"
 import { getExpenseByUserId, Expense } from "../service/expense.service"
 import { getSavingsByUserId, Savings } from "../service/savings.service"
 import { getGoalByUserId, Goal } from "../service/goal.service"
+import MonthlyBurn from "../components/MonthlyBurnRate"
+import Navbar from "../components/common/Navbar"
+import Divider from "@mui/material/Divider"
+import "./dashboard.css"
 
 export const Dashboard = () => {
-  const { user } = useContext(UserContext)
   const [incomeItems, setIncomeItems] = useState<Income[]>()
   const [totalIncome, setTotalIncome] = useState<number>(0)
   const [expenseItems, setExpenseItems] = useState<Expense[]>()
@@ -15,6 +17,7 @@ export const Dashboard = () => {
   const [totalSavings, setTotalSavings] = useState<number>(0)
   const [goalItems, setGoalItems] = useState<Goal[]>()
   const [totalGoals, setTotalGoals] = useState<number>(0)
+  const [percentBurn, setPercentBurn] = useState<number>(0)
   useEffect(() => {
     getIncomeByUserId().then(setIncomeItems)
   }, [])
@@ -57,35 +60,52 @@ export const Dashboard = () => {
     getGoalByUserId().then(setGoalItems)
   }, [])
   useEffect(() => {
+    setPercentBurn((totalExpense / totalIncome) * 100)
+  }, [])
+  useEffect(() => {
     if (goalItems && goalItems.length) {
       setTotalGoals(
         goalItems.reduce((totalGoals, goal) => totalGoals + goal.goalCost, 0)
       )
     }
   }, [goalItems])
-  const netMonthlyIncome = totalIncome - totalExpense
   if (!incomeItems) {
     return <>...loading</>
   }
   return (
     <>
-      <h1>Dashboard</h1>
-      <h2>Net Income: {totalIncome - totalExpense}</h2>
-      <h2>Monthly Burn Rate: {(totalExpense / totalIncome) * 100}%</h2>
-      <h2>Net Yearly: {(totalIncome - totalExpense)* 12 + totalSavings}</h2>
-      <h2>
-        Trajectory to Goals: {Math.ceil(totalGoals / (totalIncome - totalExpense))} Months to Reach all
-        Goals!
-      </h2>
+      <div>
+        <div>
+          <h1>Dashboard</h1>
+        </div>
+        <Divider />
+        <div className="split">
+          <div className="ColumnContainer split left">
+            <div>
+              <h2>Net Income: {totalIncome - totalExpense}</h2>
+            </div>
+            <Divider />
+            <div>
+              <h2>
+                Net Yearly: {(totalIncome - totalExpense) * 12 + totalSavings}
+              </h2>
+            </div>
+            <Divider />
+            <div>
+              <h2>
+                Trajectory to Goals:
+                {Math.ceil(totalGoals / (totalIncome - totalExpense))} Month(s)
+                to Reach all Goals!
+              </h2>
+            </div>
+          </div>
+          <Divider orientation="vertical" />
+          <div className="BigContainer split right">
+            <h2>Monthly Burn Rate: {Math.ceil((totalExpense / totalIncome) * 100)}%</h2>
+            {/* <MonthlyBurn percentBurn={percentBurn}/> */}
+          </div>
+        </div>
+      </div>
     </>
   )
 }
-
-/* 
-Math TODO with this data:
-- Net Monthly: totalincome - totalexpenses CHECK
-- Burn Rate: expenses/revenues as a % CHECK
-- Net Yearly: Net Monthly * 12 + totalSavings
-- Trajecotry to reach all goals: totalGoals/netMonthly
-Need: Total Goals && Total Savings
-*/
