@@ -17,7 +17,7 @@ export const Home = () => {
             </video>
             <p>
             Know Your Numbers.
-            <span style={{color: "green"}}>Set Your Goals.</span> 
+            <span style={{color: "limegreen"}}>Set Your Goals.</span> 
             Start Your Journey.
             </p>
             </div>
@@ -26,9 +26,9 @@ export const Home = () => {
             </div>
           </div>
           <div className="TestimonialContainer">
-            <div className="Testimonial TestimonialBox">"Most money apps have too much going on for me." <br/> - Judy</div>
-            <div className="Testimonial TestimonialBox">"Sometimes I'd rather not know than to look at my account." <br/> - Emmanuel</div>
-            <div className="Testimonial TestimonialBox">"You can't hit goals that you haven't set!" <br/> - Chris</div>
+            <div className="TestimonialBox">"Most money apps have too much going on for me." <br/> - Judy</div>
+            <div className="TestimonialBox">"Sometimes I'd rather not know than to look at my account." <br/> - Emmanuel</div>
+            <div className="TestimonialBox">"You can't hit goals that you haven't set!" <br/> - Chris</div>
           </div>
         </div>
         <div className="FooterContainer">Mind Your Money © 2021</div>
