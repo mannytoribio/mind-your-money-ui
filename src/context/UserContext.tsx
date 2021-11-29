@@ -18,7 +18,6 @@ export const UserContextProvider = (props: {
 }) => {
   const auth = getAuth()
   const [user, setUser] = useState<User>(auth.currentUser!)
-  // const [user, setUser] = useState<User>(auth.currentUser!)
   const [loaded, setLoaded] = useState(false)
   const value = { user, setUser } as UserContextT
   const { Provider } = UserContext

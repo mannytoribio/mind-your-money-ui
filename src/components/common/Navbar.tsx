@@ -11,7 +11,7 @@ import { UserContext } from '../../context/UserContext';
 const provider = new GoogleAuthProvider()
 
 export default function Navbar() {
-  const { setUser } = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
   const handleLogin = () => {
     const auth = getAuth()
     signInWithPopup(auth, provider)
@@ -19,6 +19,9 @@ export default function Navbar() {
         setUser(result.user)
       })
       .catch(err => err.message)
+  }
+  const handleLogout = () => {
+    setUser(null!)
   }
   return (
     <Box sx={{ flexGrow: 1 }}>
