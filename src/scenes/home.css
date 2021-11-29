@@ -36,8 +36,6 @@
   display: flex;
   flex-direction: column;
   flex:10;
-  background-color: #54e69da9;
-  /* background-image: url("../personalfinance.jpeg"); */
   background-size: cover;
 }
 

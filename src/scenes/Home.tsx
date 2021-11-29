@@ -15,9 +15,11 @@ export const Home = () => {
             <video autoPlay muted loop className="VideoBox">
               <source src="financeCalculation.mp4" type="video/mp4"/>
             </video>
+            <p>
             Know Your Numbers.
-            Set Your Goals.
+            <span style={{color: "green"}}>Set Your Goals.</span> 
             Start Your Journey.
+            </p>
             </div>
             <div className="LoginContainer">
               <Login/>

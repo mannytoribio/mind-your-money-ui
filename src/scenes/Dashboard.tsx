@@ -70,34 +70,34 @@ export const Dashboard = () => {
   return (
     <>
       <div>
-        <div>
+        <div style={{ padding: "20px" }}>
           <h1>Dashboard</h1>
         </div>
         <Divider />
         <div className="split">
           <div className="ColumnContainer split left">
             <div>
-              <h2>Net Income: {totalIncome - totalExpense}</h2>
+              <h1>Net Income: {totalIncome - totalExpense}</h1>
             </div>
             <Divider />
             <div>
-              <h2>
+              <h1>
                 Net Yearly: {(totalIncome - totalExpense) * 12 + totalSavings}
-              </h2>
+              </h1>
             </div>
             <Divider />
             <div>
-              <h2>
+              <h1>
                 Trajectory to Goals:
                 {Math.ceil(totalGoals / (totalIncome - totalExpense))} Month(s)
                 to Reach all Goals!
-              </h2>
+              </h1>
             </div>
           </div>
           <Divider orientation="vertical" />
-          <div className="BigContainer split right">
-            <h2>Monthly Burn Rate: {Math.ceil((totalExpense / totalIncome) * 100)}%</h2>
-            <MonthlyBurn value={(totalExpense / totalIncome) * 100}/>
+          <div className="split right">
+            <h1>Monthly Burn Rate:</h1>
+            <MonthlyBurn value={(totalExpense / totalIncome) * 100} />{" "}
           </div>
         </div>
       </div>

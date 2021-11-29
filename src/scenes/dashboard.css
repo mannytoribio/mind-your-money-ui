@@ -4,6 +4,7 @@
   color: honeydew;
   min-height:100vh;
   position: fixed;
+  padding-left: 20px;
   z-index: 0;
   font-family: 'Merriweather';
 }
@@ -15,7 +16,9 @@
   z-index: 1;
   top: 0;
   overflow-x: hidden;
+  color: honeydew;
   padding-top: 200px;
+  font-family: 'Merriweather';
 }
 .TwoRowContainer {
   display: flex;
@@ -27,12 +30,12 @@
 
 .left {
   left: 0;
-  background-color: #54e69da9;
+  padding-left: 20px;
 }
 
 .right {
   right: 0;
-  background-color: #54e69da9;
+  padding-left: 20px;
 }
 
 .ColumnContainer {
@@ -40,7 +43,7 @@
   flex-direction: column;
   color: honeydew;
   min-height:100vh;
-  font-family: 'Merriweather';
+  font-family: 'Merriweather'
 }
 
 .BigContainer {

@@ -23,7 +23,7 @@ export default function Navbar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar style={{background: '#118C4F'}}>
+        <Toolbar style={{background: 'green'}}>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             MIND YOUR MONEY
           </Typography>
