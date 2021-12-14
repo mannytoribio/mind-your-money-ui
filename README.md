@@ -21,5 +21,5 @@ This webapp was deployed using GCP's Firebase Hosting.
 
 ### Setup
 1. Clone this repo
-2. run 'yarn' to install dependencies 
-3. run 'yarn start' to work on this code in localhost
+2. run `yarn` to install dependencies 
+3. run `yarn start` to work on this code in localhost
