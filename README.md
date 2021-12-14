@@ -1,11 +1,17 @@
 ## Summary
 This is the user interface for [Mind Your Money](https://mind-your-money-webapp.web.app/), a webapp designed to provide finiancial health gauges based on a users budgeting information.
 
-## Language
+## Languages
 TypeScript
+CSS
+HTML
 
-## Component Library
+## Component Libraries
 React
+MaterialUi
+
+## Runtime Environment 
+Node.Js
 
 ## Security
 JWT, Firebase Authentication
